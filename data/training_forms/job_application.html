@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Job Application Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .form-section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        input[type="date"],
+        input[type="password"],
+        input[type="url"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .radio-group,
+        .checkbox-group {
+            margin: 10px 0;
+        }
+        .radio-group label,
+        .checkbox-group label {
+            font-weight: normal;
+            display: inline;
+            margin-left: 5px;
+        }
+        .required::after {
+            content: " *";
+            color: red;
+        }
+        .error-message {
+            color: red;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .success-message {
+            color: green;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        .button-group {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .submit-btn {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .back-btn {
+            background-color: #f44336;
+            color: white;
+        }
+        .upload-btn {
+            background-color: #2196F3;
+            color: white;
+        }
+        .draft-btn {
+            background-color: #FFA500;
+            color: white;
+        }
+        .next-btn {
+            background-color: #9C27B0;
+            color: white;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #2196F3;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .range-slider {
+            width: 100%;
+            margin: 10px 0;
+        }
+        .signature-pad {
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .autocomplete {
+            position: relative;
+        }
+        .autocomplete-items {
+            position: absolute;
+            border: 1px solid #ddd;
+            border-top: none;
+            z-index: 99;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background-color: white;
+        }
+        .autocomplete-items div {
+            padding: 10px;
+            cursor: pointer;
+        }
+        .autocomplete-items div:hover {
+            background-color: #e9e9e9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Comprehensive Job Application Form</h1>
+    
+    <!-- Personal Information Section -->
+    <div class="form-section">
+        <h2>Personal Information</h2>
+        
+        <div class="form-group">
+            <label class="required" for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" placeholder="Enter your first name">
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" placeholder="Enter your last name">
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="Enter your email">
+            <div class="error-message">Please enter a valid email address</div>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Password (for account creation)</label>
+            <input type="password" id="password" name="password" placeholder="Create a password">
+        </div>
+
+        <div class="form-group">
+            <label class="required" for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="(123) 456-7890">
+        </div>
+
+        <div class="form-group">
+            <label for="dob">Date of Birth</label>
+            <input type="date" id="dob" name="dob">
+        </div>
+
+        <div class="form-group">
+            <label>Gender</label>
+            <div class="radio-group">
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Male</label>
+                
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Female</label>
+                
+                <input type="radio" id="other" name="gender" value="other">
+                <label for="other">Other</label>
+                
+                <input type="radio" id="preferNot" name="gender" value="preferNot">
+                <label for="preferNot">Prefer not to say</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Location Information -->
+    <div class="form-section">
+        <h2>Location Information</h2>
+
+        <div class="form-group">
+            <label for="city">City</label>
+            <div class="autocomplete">
+                <input type="text" id="city" name="city" placeholder="Enter your city">
+                <div class="autocomplete-items"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="state">State</label>
+            <select id="state" name="state">
+                <option value="">Select a state</option>
+                <option value="AL">Alabama</option>
+                <option value="AK">Alaska</option>
+                <!-- Add more states -->
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="zip">ZIP Code</label>
+            <input type="number" id="zip" name="zip" placeholder="Enter ZIP code">
+        </div>
+
+        <div class="form-group">
+            <label>Willing to Relocate?</label>
+            <label class="toggle-switch">
+                <input type="checkbox" id="relocate" name="relocate">
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+
+    <!-- Employment Information -->
+    <div class="form-section">
+        <h2>Employment Information</h2>
+
+        <div class="form-group">
+            <label class="required" for="jobTitle">Job Title</label>
+            <div class="autocomplete">
+                <input type="text" id="jobTitle" name="jobTitle" placeholder="Enter job title">
+                <div class="autocomplete-items"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="expectedSalary">Expected Salary Range</label>
+            <input type="range" id="salaryRange" name="salaryRange" min="30000" max="200000" step="5000" class="range-slider">
+            <span id="salaryValue">$75,000</span>
+        </div>
+
+        <div class="form-group">
+            <label for="experience">Years of Experience</label>
+            <input type="number" id="experience" name="experience" min="0" max="50">
+        </div>
+
+        <div class="form-group">
+            <label>Employment Type</label>
+            <div class="radio-group">
+                <input type="radio" id="fullTime" name="employmentType" value="fullTime">
+                <label for="fullTime">Full Time</label>
+                
+                <input type="radio" id="partTime" name="employmentType" value="partTime">
+                <label for="partTime">Part Time</label>
+                
+                <input type="radio" id="contract" name="employmentType" value="contract">
+                <label for="contract">Contract</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Work Authorization</label>
+            <label class="toggle-switch">
+                <input type="checkbox" id="workAuth" name="workAuth">
+                <span class="slider"></span>
+            </label>
+            <span>I am legally authorized to work in this country</span>
+        </div>
+
+        <div class="form-group">
+            <label for="startDate">Available Start Date</label>
+            <input type="date" id="startDate" name="startDate">
+        </div>
+    </div>
+
+    <!-- Education Section -->
+    <div class="form-section">
+        <h2>Education</h2>
+
+        <div class="form-group">
+            <label for="education">Highest Education Level</label>
+            <select id="education" name="education">
+                <option value="">Select education level</option>
+                <option value="highSchool">High School</option>
+                <option value="associate">Associate's Degree</option>
+                <option value="bachelor">Bachelor's Degree</option>
+                <option value="master">Master's Degree</option>
+                <option value="phd">Ph.D.</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="school">School/University</label>
+            <div class="autocomplete">
+                <input type="text" id="school" name="school" placeholder="Enter school name">
+                <div class="autocomplete-items"></div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="graduationDate">Graduation Date</label>
+            <input type="date" id="graduationDate" name="graduationDate">
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="form-section">
+        <h2>Skills</h2>
+
+        <div class="form-group">
+            <label>Programming Languages</label>
+            <select id="languages" name="languages" multiple size="4">
+                <option value="python">Python</option>
+                <option value="java">Java</option>
+                <option value="javascript">JavaScript</option>
+                <option value="cpp">C++</option>
+                <option value="csharp">C#</option>
+                <option value="ruby">Ruby</option>
+                <option value="php">PHP</option>
+                <option value="swift">Swift</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Tools & Technologies</label>
+            <select id="tools" name="tools" multiple size="4">
+                <option value="git">Git</option>
+                <option value="docker">Docker</option>
+                <option value="aws">AWS</option>
+                <option value="azure">Azure</option>
+                <option value="kubernetes">Kubernetes</option>
+                <option value="jenkins">Jenkins</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Availability</label>
+            <div class="checkbox-group">
+                <input type="checkbox" id="weekdays" name="availability" value="weekdays">
+                <label for="weekdays">Weekdays</label>
+                
+                <input type="checkbox" id="weekends" name="availability" value="weekends">
+                <label for="weekends">Weekends</label>
+                
+                <input type="checkbox" id="nights" name="availability" value="nights">
+                <label for="nights">Nights</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="availabilityPercent">Availability Percentage</label>
+            <input type="range" id="availabilityPercent" name="availabilityPercent" min="0" max="100" step="10" class="range-slider">
+            <span id="availabilityValue">50%</span>
+        </div>
+    </div>
+
+    <!-- Documents Section -->
+    <div class="form-section">
+        <h2>Documents</h2>
+
+        <div class="form-group">
+            <label class="required" for="resume">Resume</label>
+            <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx">
+        </div>
+
+        <div class="form-group">
+            <label for="coverLetter">Cover Letter</label>
+            <input type="file" id="coverLetter" name="coverLetter" accept=".pdf,.doc,.docx">
+        </div>
+
+        <div class="form-group">
+            <label for="portfolio">Portfolio URL</label>
+            <input type="url" id="portfolio" name="portfolio" placeholder="Enter your portfolio URL">
+        </div>
+
+        <div class="form-group">
+            <label for="linkedin">LinkedIn Profile</label>
+            <input type="url" id="linkedin" name="linkedin" placeholder="Enter your LinkedIn profile URL">
+        </div>
+    </div>
+
+    <!-- Additional Information -->
+    <div class="form-section">
+        <h2>Additional Information</h2>
+
+        <div class="form-group">
+            <label for="coverLetterText">Cover Letter</label>
+            <textarea id="coverLetterText" name="coverLetterText" rows="6" placeholder="Enter your cover letter"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="comments">Additional Comments</label>
+            <textarea id="comments" name="comments" rows="4" placeholder="Any additional information you'd like to share"></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Digital Signature</label>
+            <div class="signature-pad" id="signaturePad">
+                <!-- Signature pad will be initialized with JavaScript -->
+            </div>
+            <button type="button" onclick="clearSignature()">Clear Signature</button>
+        </div>
+
+        <div class="form-group">
+            <div class="checkbox-group">
+                <input type="checkbox" id="terms" name="terms" required>
+                <label for="terms">I agree to the terms and conditions</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="checkbox-group">
+                <input type="checkbox" id="background" name="background" required>
+                <label for="background">I acknowledge that a background check may be required</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Navigation -->
+    <div class="form-section">
+        <div class="button-group">
+            <button type="button" class="back-btn">Back</button>
+            <button type="button" class="draft-btn">Save as Draft</button>
+            <button type="button" class="upload-btn">Upload Resume</button>
+            <button type="button" class="next-btn">Continue</button>
+            <button type="submit" class="submit-btn">Submit Application</button>
+        </div>
+        <div class="success-message">Your application has been submitted successfully!</div>
+    </div>
+
+    <script>
+        // Initialize signature pad
+        const signaturePad = new SignaturePad(document.getElementById('signaturePad'), {
+            backgroundColor: 'rgb(255, 255, 255)'
+        });
+
+        function clearSignature() {
+            signaturePad.clear();
+        }
+
+        // Update range slider values
+        document.getElementById('salaryRange').addEventListener('input', function(e) {
+            document.getElementById('salaryValue').textContent = '$' + e.target.value.toLocaleString();
+        });
+
+        document.getElementById('availabilityPercent').addEventListener('input', function(e) {
+            document.getElementById('availabilityValue').textContent = e.target.value + '%';
+        });
+
+        // Simple autocomplete functionality
+        const autocompleteInputs = document.querySelectorAll('.autocomplete input');
+        autocompleteInputs.forEach(input => {
+            input.addEventListener('input', function(e) {
+                const items = this.parentElement.querySelector('.autocomplete-items');
+                // Add your autocomplete logic here
+            });
+        });
+    </script>
+</body>
+</html> 

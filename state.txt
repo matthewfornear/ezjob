@@ -1,0 +1,183 @@
+Project: Job Application Automation Bot
+Status: In Development
+Last Updated: 2024-05-10
+
+Current Features:
+1. Form Detection System
+   - Object detection model (YOLOv5) for detecting form elements with bounding boxes
+   - Label detection and field-label relationship mapping
+   - Support for 10+ different form element types
+   - Real-time form element localization and classification
+
+2. Data Collection & Annotation
+   - Full-page screenshot capture (Selenium)
+   - Training data collection tool
+   - Labeled dataset creation using bounding boxes
+   - Annotation with LabelImg (YOLO format)
+
+3. Machine Learning Pipeline
+   - YOLOv5-based object detection model
+   - PyTorch backend
+   - Transfer learning implementation
+   - Real-time inference capabilities
+
+4. Automation (Optional)
+   - Vision-based form filling using detected elements
+   - Automation logic in src/core/job_applicator.py
+
+Tech Stack:
+- Python 3.8+
+- PyTorch 2.2.0
+- YOLOv5 (Ultralytics)
+- OpenCV
+- Pillow
+- NumPy
+- Selenium
+- LabelImg
+- pyautogui
+- VS Code
+- Git
+- Windows 10/11
+
+Current Tasks:
+1. Data Collection
+   - [x] Full-page screenshot script (Selenium)
+   - [x] Data organization (images/labels)
+   - [ ] Collect diverse form screenshots
+2. Annotation
+   - [x] LabelImg setup
+   - [ ] Annotate screenshots in YOLO format
+3. Model Training
+   - [x] YOLOv5 repo setup
+   - [ ] Prepare data.yaml
+   - [ ] Train model on annotated data
+4. Automation
+   - [ ] Integrate detection with JobApplicator (optional)
+   - [ ] Test end-to-end automation (optional)
+
+Next Steps:
+1. Take and annotate more screenshots from diverse websites
+2. Prepare data.yaml and train YOLOv5
+3. (Optional) Integrate and test automation
+
+Dependencies:
+- torch==2.2.0
+- torchvision
+- yolov5
+- opencv-python
+- Pillow
+- numpy
+- labelImg
+- selenium
+- pyautogui
+- python-dotenv
+- logging
+- datetime
+
+Immediate Next Action:
+1. Take full-page screenshots and annotate with LabelImg
+2. Prepare data.yaml and train YOLOv5
+3. (Optional) Use JobApplicator for automation
+
+Current State of Project1999 ML Bot (Updated)
+
+1. Environment Setup (100% Complete)
+   - Python 3.11 environment created
+   - All ML dependencies installed
+   - Core infrastructure ready
+
+2. Core ML Infrastructure (80% Complete)
+   - Vision model architecture defined
+   - RL model architecture defined
+   - Data collection pipeline ready
+   - Training pipeline ready
+
+3. Vision System (40% Complete)
+   - Basic model architecture implemented
+   - Data collection system ready
+   - Training pipeline ready
+   - Need to collect and label training data (screenshots and metadata)
+
+4. RL System (30% Complete)
+   - Basic environment defined
+   - Model architecture ready
+   - Training pipeline ready
+   - Need to implement reward functions
+
+5. Game Integration (20% Complete)
+   - Basic window management ready
+   - Need to implement game state detection
+   - Need to implement action execution
+
+6. Testing and Safety (10% Complete)
+   - Basic error handling implemented
+   - Need comprehensive testing suite
+   - Need safety mechanisms
+
+7. Documentation (15% Complete)
+   - Basic code documentation
+   - Need comprehensive documentation
+   - Need usage guides
+
+Next Steps (Atomic Tasks):
+
+1. Data Collection Phase
+   a. Create data collection directory:
+      mkdir -p data/raw data/processed data/labels
+   
+   b. Run initial data collection:
+      python src/ml/data/collect_form_data.py --html-path data/training_forms/job_application.html --num-samples 100 --data-dir data
+      - This will collect 100 game state samples (screenshots of the game window and associated metadata)
+      - After collection, you must manually label each screenshot (e.g., mark/classify enemies, items, NPCs, UI elements, etc.)
+      - Save the labels in data/labels/
+
+2. Vision Model Training
+   a. After collecting and labeling initial data:
+      python src/ml/train.py --num-epochs 10 --batch-size 32 --data-dir data
+      - This will train the vision model to recognize and classify game elements from screenshots
+      - Model will be saved in models/vision/
+      - Training metrics will be logged
+
+3. RL Environment Setup
+   a. Define game states and actions:
+      - Edit src/ml/models/rl_model.py
+      - Define state space
+      - Define action space
+      - Implement reward function
+
+4. RL Model Training
+   a. After vision model is trained:
+      python src/ml/train_rl.py --total-timesteps 10000
+      - This will train the RL model
+      - Model will be saved in models/rl/
+      - Training metrics will be logged
+
+5. Testing and Validation
+   a. Test vision model:
+      python src/ml/train.py --evaluate
+   b. Test RL model:
+      python src/ml/train_rl.py --evaluate
+
+6. Integration Testing
+   a. Run the bot with trained models:
+      python src/run_bot.py --vision-model models/vision/latest.pt --rl-model models/rl/latest.zip
+
+Current Progress:
+- Environment Setup: 100%
+- Core Infrastructure: 80%
+- Vision System: 40%
+- RL System: 30%
+- Game Integration: 20%
+- Testing and Safety: 10%
+- Documentation: 15%
+
+Overall Project Progress: 35%
+
+Immediate Next Action:
+1. Start data collection by running:
+   python src/ml/data/collect_form_data.py --html-path data/training_forms/job_application.html --num-samples 100 --data-dir data
+   - This will capture 100 screenshots of the game window and store them in data/raw/ with metadata
+2. Manually label the collected data (identify/classify game elements in each screenshot and save labels in data/labels/)
+3. Begin vision model training
+
+Note: Each step should be completed and validated before moving to the next step. The data collection and labeling phase is crucial for the success of the vision model, which in turn is essential for the RL model's performance. 

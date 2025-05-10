@@ -1,0 +1,102 @@
+# Project Instructions: End-to-End Workflow
+
+## 1. Take Full-Page Screenshots
+
+- Use the automated script:
+
+    .\venv\Scripts\activate
+    python src/ml/data/screenshot_fullpage.py --url "file:///C:/projects/mmorpgbot/data/training_forms/job_application.html" --output data/images/form1.png
+
+- Or, for other URLs:
+
+    python src/ml/data/screenshot_fullpage.py --url "https://example.com" --output data/images/example.png
+
+- Save all screenshots in `data/images/`.
+
+---
+
+## 2. Annotate Screenshots with LabelImg
+
+- Install LabelImg (if needed):
+
+    pip install labelImg
+
+- Launch LabelImg:
+
+    labelImg
+
+- Set image folder to `data/images/` and label folder to `data/labels/`.
+- Draw bounding boxes around each form element and assign the correct class label.
+- Save in YOLO format (`.txt` files).
+
+---
+
+## 3. Prepare data.yaml
+
+- Create a `data.yaml` file in your project root or `yolov5/` directory:
+
+    train: ../data/images
+    val: ../data/images
+    nc: 10  # number of classes
+    names: [ 'text_input', 'email_input', 'phone_input', 'dropdown', 'checkbox', 'radio_button', 'submit_button', 'error_message', 'success_message', 'required_field' ]
+
+- Adjust `nc` and `names` as needed for your classes.
+
+---
+
+## 4. Train the YOLOv5 Model
+
+- Activate your virtual environment:
+
+    .\venv\Scripts\activate
+
+- Change directory to YOLOv5:
+
+    cd yolov5
+
+- (First time only) Install requirements:
+
+    pip install -r requirements.txt
+
+- Train the model:
+
+    python train.py --img 640 --batch 16 --epochs 20 --data ../data.yaml --weights yolov5s.pt
+
+---
+
+## 5. Run Inference
+
+- After training, run inference on new images:
+
+    python detect.py --weights runs/train/exp/weights/best.pt --source ../data/images
+
+---
+
+## 6. (Optional) Use the Automation Bot
+
+- If you want to automate form filling using the trained model, use the `JobApplicator` class in `src/core/job_applicator.py`.
+- Update or provide your application data and run the bot as needed.
+
+---
+
+## 7. Troubleshooting
+
+- If you get a 'file not found' error, check your paths and folder structure.
+- If YOLOv5 hangs, check your `data.yaml` and that images/labels are present.
+- For annotation, ensure YOLO format is selected in LabelImg.
+- For further help, refer to the README or ask your assistant.
+
+---
+
+## Folder Structure Reference
+
+- `src/ml/data/` — Screenshot scripts
+- `src/ml/models/` — Model architectures
+- `src/ml/training/` — Training scripts
+- `src/ml/tools/` — Labeling/utility tools
+- `src/core/` — Automation logic
+- `data/images/` — Screenshots
+- `data/labels/` — YOLO-format label files
+- `data/training_forms/` — HTML forms
+- `models/` — Saved model weights
+- `yolov5/` — YOLOv5 repo 

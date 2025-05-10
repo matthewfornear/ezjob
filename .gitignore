@@ -1,0 +1,122 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+*.log
+
+# Virtual environment
+venv/
+ENV/
+env/
+.venv/
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# Data and annotation outputs
+data/images/
+data/labels/
+data/processed/
+data/raw/
+data/*.csv
+data/*.tsv
+data/*.xlsx
+
+# Chrome user profile (persistent browser state)
+chrome_profile/
+
+# Model weights and outputs
+models/
+*.pt
+*.pth
+*.h5
+*.ckpt
+*.onnx
+
+# YOLOv5 training outputs
+yolov5/runs/
+yolov5/weights/
+yolov5/*.pt
+
+# System files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+# VS Code and IDE settings
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# OS/Editor swap and temp files
+*~
+*.swp
+*.bak
+*.tmp
+
+# Environment/config files (optional, if you want to keep secrets out)
+.env
+.env.*
+
+# LabelImg config (if you use it)
+labelImg/settings/*.ini
+
+# YOLOv5 directory
+yolov5/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Model weights and datasets
+*.pt
+*.pth
+*.weights
+*.onnx
+*.engine
+datasets/
