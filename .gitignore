@@ -19,15 +19,6 @@ env/
 # Jupyter Notebook checkpoints
 .ipynb_checkpoints
 
-# Data and annotation outputs
-data/images/
-data/labels/
-data/processed/
-data/raw/
-data/*.csv
-data/*.tsv
-data/*.xlsx
-
 # Chrome user profile (persistent browser state)
 chrome_profile/
 
@@ -62,13 +53,11 @@ desktop.ini
 *.bak
 *.tmp
 
-# Environment/config files (optional, if you want to keep secrets out)
+# Environment/config files 
 .env
 .env.*
 
-# LabelImg config (if you use it)
-labelImg/settings/*.ini
-
+labelImg
 # YOLOv5 directory
 yolov5/
 
